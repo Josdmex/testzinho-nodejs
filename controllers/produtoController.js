@@ -1,5 +1,5 @@
 
-const produtos = require('../dados/produtos');
+const produtos = require('../dados/produto');
 
 let proximoId = 4;
 
