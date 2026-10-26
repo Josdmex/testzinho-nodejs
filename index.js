@@ -1,5 +1,6 @@
+
 const express = require('express');
-const produtoRoutes = require('./routes/produtosRoutes');
+const produtosRoutes = require('./routes/produtosRoutes');
 
 const app = express();
 
@@ -11,4 +12,7 @@ app.get('/', (req, res) => {
 
 app.use('/produtos', produtosRoutes);
 
-app.listen(3000, () => console.log('Servidor rodando na porta 3000'));
+app.listen(3000, () => {
+  console.log('Servidor rodando na porta 3000');
+});
+  
