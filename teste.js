@@ -1,27 +1,30 @@
-const http = require('http');
+const BASE = 'http://localhost:3000';
 
-const dados = JSON.stringify({ nome: 'Boné', preco: 39.9 });
+async function pedir(metodo, caminho, dados) {
+  const opcoes = {method: metodo, headers: { 'Content-Type': 'application/json'}};
+  if (dados) opcoes.body = JSON.stringify(dados);
 
-const pedido = http.request(
-  {
-    hostname: '127.0.0.1',
-    port: 3000,
-    path: '/produtos',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Content-Length': Buffer.byteLength(dados),
-    },
-  },
-  (resposta) => {
-    let corpo = '';
-    resposta.on('data', (parte) => (corpo += parte));
-    resposta.on('end', () =>
-      console.log('Status:', resposta.statusCode, '| Resposta:', corpo)
-    );
+  const resposta = await fetch(BASE + caminho, opcoes);
+  const texto = await resposta.text();
+  const corpo = texto ? JSON.parse(texto) : '(sem conteúdo)';
+
+  console.log(`\n${metodo} ${caminho} → status ${resposta.status}`);
+  console.log(corpo);
+  return corpo;
+}
+
+async function testarTudo() {
+  try {
+    await pedir('GET', '/produtos');
+    await pedir('GET', '/produtos/1');
+    const novo = await pedir('POST', '/produtos', { nome: 'Boné', preco: 39.9});
+    await pedir('PUT', '/produtos', { nome: 'Boné', preco: 59.9 });
+    await pedir('DELETE', `/produtos/${novo.id}`);
+    await pedir('GET', `/produtos/${novo.id}`);
+    await pedir('POST', '/produtos', { nome: 'Meia' });
+  } catch (erro) {
+    console.log('Motivo do erro:', erro.cause || erro.message);
   }
-);
+}
 
-pedido.on('error', (erro) => console.log('Erro:', erro.message));
-pedido.write(dados);
-pedido.end();
+testarTudo();
