@@ -1,7 +1,7 @@
 const fs = require('fs/promises');
 const path = require('path');
 
-const CAMINHO = path.join(_dirname, 'banco.json');
+const CAMINHO = path.join(__dirname, 'banco.json');
 
 async function lerBanco() {
   const conteudo = await fs.readFile(CAMINHO, 'utf-8');

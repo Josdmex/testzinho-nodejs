@@ -1,0 +1,182 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+main {
+    max-width: 650px;
+    margin: 0 auto;
+    background-color: #2b2b2b;
+    padding: 35px;
+    border-radius: 5px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.734);
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+}
+
+form {
+    background-color: #212121;
+    padding: 25px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+#titulo-form {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #000000;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.689)
+}
+
+input::placeholder {
+    color: #ffffff;
+}
+
+.botoes {
+    display: flex;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+button {
+    flex: 1;
+    padding: 13px 18px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#botao-salvar {
+    background-color: pink;
+    color: rgb(0, 0, 0);
+}
+
+#botao-salvar:hover {
+    background-color: rgb(143, 124, 124);
+}
+
+#botao-cancelar {
+    background-color: #ff0000;
+    color: #ffffff;
+}
+
+#botao-cancelar:hover {
+    background-color: #f96262;
+}
+
+#mensagem {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+#lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#lista li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background-color: #f9fafb;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    overflow-wrap: anywhere;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+#lista li:hover {
+    background-color: #eef2ff;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08);
+}
+
+/* ===== Botões que possam existir dentro dos produtos ===== */
+#lista button {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 9px 12px;
+    font-size: 0.9rem;
+}
+
+/* ===== Responsividade para celulares ===== */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    main {
+        padding: 22px 16px;
+        border-radius: 5px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    form {
+        padding: 18px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    #lista li {
+        flex-wrap: wrap;
+    }
+}
